@@ -1,7 +1,7 @@
 import React from 'react';
 
-function calcRomano() {
+function CalcRomano() {
     return(<p>calculadora romana</p>)
 };
 
-export default calcRomano;
+export default CalcRomano;
