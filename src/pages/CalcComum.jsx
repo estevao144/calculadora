@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import '../styles/calculadoras.css';
 
 function CalcComum() {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(0);
   const [operador, setOperador] = useState('');
-  
+  // const [number1, setNumber1] = useState('')
 
   // const submitOper = (event) => {
   //   const {target:{value}} = event;
@@ -15,12 +15,14 @@ function CalcComum() {
   
 
   const handleResults = ({target:{value}}) => {
+    if (results === 0) {
+      setResults(value);
+    } else {
+      setResults(results+value);
+      
+    }
     console.log(results);
-
-    setResults(...results, value);
-
   };
-
 
   return (
     <div>
