@@ -26,6 +26,7 @@ function Login() {
     disableValidation();
 
 };
+console.log(email);
 const handlePassword = (event) => {
     const {target:{ value }} = event;
     setPassword(value);
@@ -39,7 +40,7 @@ const handleSubmit = () => {
     <div className="container-login">
      <form>
         <h3>Login</h3>
-      <label className="login-email" for="email">
+      <label className="login-email" htmlFor="email">
         email
         <input
           name="email"
@@ -50,7 +51,7 @@ const handleSubmit = () => {
           onChange={ handleEmail }
         />
      </label>
-      <label className="login-senha" for="senha">
+      <label className="login-senha" htmlFor="senha">
         Senha:
         <input
           name="senha"
@@ -66,8 +67,8 @@ const handleSubmit = () => {
             <button
                 type="button"
                 className="btn"
-                disabbled={ isvalida }
-                OnClick={ handleSubmit }
+                disabled={ isvalida }
+                onClick={ handleSubmit }
 
             >
             Login
