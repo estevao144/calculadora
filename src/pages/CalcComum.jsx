@@ -1,54 +1,29 @@
 import React, { useState } from "react";
 import "../styles/calculadoras.css";
 
-// dica do Denny, ler sobre Eval()
 // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/eval
 function CalcComum() {
-  const [results, setResults] = useState(0);
-  const [operador, setOperador] = useState("");
-  const [number1, setNumber1] = useState("");
-
-  const submitOper = ({ target: { value } }) => {
-    setOperador(value);
-    setNumber1(Number(results));
-    setResults(0);
-    btnIgual();
-  };
-
-  console.log(`number 1:${number1}, operador escolhido: ${operador}`);
-
+  const [results, setResults] = useState('0');
+  const [expression, setExpression] = useState('');
+  
+ 
+  console.log(`results: ${results}, expression: ${expression}`);
   const btnIgual = () => {
-    let total = 0;
-    if (operador === "+") {
-      total = Number(results) + Number(number1);
-    } else if (operador === "-") {
-      total = Number(results) - Number(number1);
-    } else if (operador === "*") {
-      total = Number(results) * Number(number1);
-    } else if (operador === "/") {
-      total = Number(results) / Number(number1);
-    }
-    setResults(Number(total));
+    setResults(eval(`${results}`));
   };
 
   const btnClear = () => {
-    setNumber1("");
-    setResults(0);
-    setOperador("");
+    setExpression('');
+    setResults('');
+    
   };
-
+  
   const handleResults = ({ target: { value } }) => {
-    setNumber1(results);
-    if (results === 0) {
-      setResults(value);
-    } else {
-      setResults(results + value);
-    }
+    setResults(results+ value);
   };
 
   return (
-    <div>
-      <h1>Calculadora</h1>
+    <div className="h-100 d-flex align-items-center justify-content-center">
       <div className="calculator card">
         <input
           type="text"
@@ -57,12 +32,12 @@ function CalcComum() {
           placeholder={results}
         />
 
-        <div class="calculator-keys">
+        <div className="calculator-keys">
           <button
             type="button"
             className="operator btn btn-info"
             value="+"
-            onClick={submitOper}
+            onClick={handleResults}
           >
             +
           </button>
@@ -71,7 +46,7 @@ function CalcComum() {
             type="button"
             className="operator btn btn-info"
             value="-"
-            onClick={submitOper}
+            onClick={handleResults}
           >
             -
           </button>
@@ -80,7 +55,7 @@ function CalcComum() {
             type="button"
             className="operator btn btn-info"
             value="*"
-            onClick={submitOper}
+            onClick={handleResults}
           >
             &times;
           </button>
@@ -89,7 +64,7 @@ function CalcComum() {
             type="button"
             className="operator btn btn-info"
             value="/"
-            onClick={submitOper}
+            onClick={handleResults}
           >
             &divide;
           </button>
@@ -177,7 +152,7 @@ function CalcComum() {
           >
             0
           </button>
-          <button className="decimal function btn btn-secondary">.</button>
+          <button className="decimal function btn btn-secondary" value="." onClick={handleResults}>.</button>
           <button
             className="all-clear function btn btn-danger btn-sm"
             onClick={btnClear}
