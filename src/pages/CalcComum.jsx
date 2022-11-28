@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../styles/calculadoras.css";
 
-// https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/eval
+
 function CalcComum() {
-  const [results, setResults] = useState('0');
+  const [results, setResults] = useState('');
   const [expression, setExpression] = useState('');
   
  
