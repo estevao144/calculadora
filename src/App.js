@@ -7,9 +7,10 @@ import Login from './pages/Login';
 function App() {
   return (
     <Routes>
-      <Route exact path="/" element={ <Login /> } />
+      <Route exact path="/" element={ <CalcComum /> } />
       <Route exact path="/calcComum" element={ <CalcComum /> }/>
       <Route exact path="/calcRom" element={ <CalcRomano /> } />
+      <Route exact path="/login" element={ <Login /> } />
     </Routes>
 
     
